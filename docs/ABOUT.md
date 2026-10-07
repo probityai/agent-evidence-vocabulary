@@ -59,7 +59,7 @@ Version 0.3.0, tagged September 25, 2026. It adds `recomputed` to the evidence s
 
 The initial term set came from reading the nearest comparable registry term by term and recording,
 for each of ours, whether it names ground nobody has named yet or overlaps something already in
-use. Both answers occur. Five of the eight terms carry a why_this_registry note saying which, and
+use. Both answers occur. Six of the nine terms carry a why_this_registry note saying which, and
 that note is a field in the file, so a reader who disagrees can point at the line. The other three
 make their case in the definition itself.
 
