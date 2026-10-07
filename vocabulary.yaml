@@ -196,6 +196,34 @@ evidence_dimensions:
     issuers_in_production: []
     promotion_trigger: "An independent implementation that is not us, with a real beacon binding."
 
+  intent_binding:
+    status: proposed
+    review_by: "2027-04-07"
+    values: [committed_before_execution, asserted_after_execution]
+    definition: >
+      Whether the identifier of the intent an action ran under (the authority
+      that permitted it, naming who requested it and who executed it) is folded
+      into a commitment the observer signed BEFORE the action began
+      (committed_before_execution), or only attached to the record once the
+      action was over (asserted_after_execution). A committed identifier
+      survives fan-out, retries and hops between agents as signed content: every
+      record descended from one intent carries the same value inside bytes
+      fixed before each action opened, so linking them needs no header that
+      every hop must forward. An asserted identifier is a label a producer can
+      choose after seeing the outcome. Composes by weakest input: a chain of
+      actions is committed_before_execution only if every link is.
+    source_path: "observed-effect predicate: predicate.authorityDigest, bound by predicate.observation.priorCommitment.commitmentDigest"
+    issuers_in_production: []
+    why_this_registry: >
+      Tracing work for multi-agent and MCP systems keeps arriving at the same
+      missing primitive, an original intent identifier that survives fan-out,
+      retries and multi-agent hops, and keeps proposing it as a propagated
+      header. A propagated header is reconstructed after the fact and breaks at
+      the first hop that drops it. The question a consumer needs answered is not
+      whether the identifier is present but whether it was fixed before the
+      action ran, and no existing term names that.
+    promotion_trigger: "An independent implementation that is not us, emitting the intent identifier inside a commitment signed before the action opens."
+
 # posture_and_coverage: what an execution environment was actually in, and
 # how much of a declared population a claim actually assessed.
 posture_and_coverage:
